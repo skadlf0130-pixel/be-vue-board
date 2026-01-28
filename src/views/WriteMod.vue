@@ -1,4 +1,5 @@
 <script setup>
+/* reactive의 역할  -객체를 “반응형 상태”로 만들어서, 값이 바뀌면 화면(Vue 템플릿)도 자동으로 같이 바뀌게 해주는 역할 */
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import httpService from '@/services/httpService';
@@ -37,6 +38,18 @@ const submit = async () =>{
 }
 </script>
 
+<!-- 프라미스(Promise) 객체 :지금은 결과가 없지만,
+미래에 성공 또는 실패 결과를 약속하는 객체
+
+async / await 한 줄 정의
+비동기 코드를 동기 코드처럼 보이게 해주는 문법
+
+async : 이 함수는 Promise를 반환한다
+await : Promise가 끝날 때까지 기다린다
+await는 async 함수 안에서만 가능
+에러 처리는 try / catch
+-->
+<!-- v-model : 양방향이벤트 -->
 <template>
 <h3>네모네모 스펀지밥</h3>
 <div>

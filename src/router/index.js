@@ -10,8 +10,12 @@ const router = createRouter({
     },
     {
       path: '/',
-      component: () => import('../views/BoardList.vue')
-    }
+      component: () => import('../views/BoardList.vue'),
+    },
+    {
+      path: '/detail/:id',
+      component: () => import('../views/BoardDetail.vue'),
+    },
   ],
 })
 
