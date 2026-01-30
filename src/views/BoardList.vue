@@ -10,21 +10,26 @@ const state = reactive({
 
 const router = useRouter();
 
-onMounted(async()=>{
+onMounted(async () => {
     const result = await httpService.findAll();
     state.list = result;
 });
 
 const moveToDetail = id => {
-    router.push(`/detail/${id}`)
-    console.log ('moveToDetail-id:',id)
+    //router와 id를 이용하여 주소 이동~~~~
+    console.log('moveToDetail - id: ', id);
+    router.push({
+        path: `/detail/${id}`
+    });
 }
 
 </script>
 
 <template>
 <h3> 게시판 리스트 </h3>
-<table>
+
+<div v-if="state.list.length === 0">작성된 글이 없습니다.</div>
+<table v-else>
     <tr>
         <th>번호</th>
         <th>제목</th>
@@ -42,9 +47,12 @@ const moveToDetail = id => {
 </template>
 
 <style scoped>
-table {border-collapse: collapse;}
-table,th,td {border: 1px solid #605d5d ;}
-td {cursor: pointer;}
-tr:hover{ background-color: rgb(223, 238, 249);}
-th {background-color: #ccc;}
+table { border-collapse: collapse; }
+table, th, td { border: 1px solid #ccc; }
+th, td { padding: 10px; }
+
+td { cursor: pointer;  }
+tr:hover { background-color: aliceblue; }
+tr:first-child { background-color: gray; }
+
 </style>
